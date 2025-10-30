@@ -8,10 +8,9 @@ int main()
 {
     int a, b;
     printf("Enter two integers (a, b): ");
-    scanf("%d", &a);
-    scanf("%d", &b);
+    scanf("%d %d", &a, &b);
+
     printf("On subtracting, we get %d", a + (~b + 1));
-    printf("On subtracting, we get %d %d", a, b);
 
     return 0;
 }

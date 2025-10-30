@@ -7,6 +7,7 @@ Input: {5, 40, 1, 40, 100000, 1, 5, 1}
 Output: 5 40 1*/
 
 #include <stdio.h>
+#include <stdbool.h>
 
 int main()
 {
@@ -22,26 +23,37 @@ int main()
         scanf("%d", &arr[i]);
     }
 
-    int count = 1;
-    int multiple = 1;
+    bool No_Duplicate = true;
+    
+    printf("Duplicate elements are: ");
+
     for (int i = 0; i < n; i++)
     {
-        for (int j = i + 1; j < n; j++)
+        bool already_printed = false;
+
+        for (int k = 0; k < i; k++)
         {
-            if (multiple <= 1)
+            if (arr[i] == arr[k])
             {
-                if (arr[i] == arr[j])
-            {
-                printf("%d ", arr[i]);
-                count = 0;
-                multiple++;
+                already_printed = true;
                 break;
             }
+        }
+
+        if (already_printed) continue;
+
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                printf("%d ", arr[i]);
+                No_Duplicate = false;
+                break;
             }
         }
     }
 
-    if (count) printf("-1");
+    if (No_Duplicate) printf("-1");
 
     return 0;
 }
